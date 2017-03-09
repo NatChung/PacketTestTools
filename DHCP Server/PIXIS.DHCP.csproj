@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{66142871-4F58-436D-A1A9-00123902486F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PIXIS.DHCP</RootNamespace>
+    <AssemblyName>PIXIS.DHCP</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\Refs\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BigInteger.cs" />
+    <Compile Include="ByteBuffer.cs" />
+    <Compile Include="Config\DhcpConfigObject.cs" />
+    <Compile Include="Config\DhcpLink.cs" />
+    <Compile Include="Config\DhcpServerConfiguration.cs" />
+    <Compile Include="Config\DhcpServerPolicies.cs" />
+    <Compile Include="Config\DhcpV6OptionConfigObject.cs" />
+    <Compile Include="Config\Properties.cs" />
+    <Compile Include="DB\DhcpLease.cs" />
+    <Compile Include="DB\DhcpOptionDAO.cs" />
+    <Compile Include="DB\IaAddress.cs" />
+    <Compile Include="DB\IaAddressDAO.cs" />
+    <Compile Include="DB\IaManager.cs" />
+    <Compile Include="Config\DhcpV4OptionConfigObject.cs" />
+    <Compile Include="DB\IaPrefix.cs" />
+    <Compile Include="DB\IaPrefixDAO.cs" />
+    <Compile Include="DB\IdentityAssoc.cs" />
+    <Compile Include="DB\IdentityAssocDAO.cs" />
+    <Compile Include="DB\JdbcLeaseManager.cs" />
+    <Compile Include="DB\LeaseManager.cs" />
+    <Compile Include="DHCPMessageType.cs" />
+    <Compile Include="DhcpServer.cs" />
+    <Compile Include="Config\DhcpV4ConfigOptions.cs" />
+    <Compile Include="HandleAckMessage.cs" />
+    <Compile Include="HandleAdvertiseMessage.cs" />
+    <Compile Include="HandleDiscoverMessage.cs" />
+    <Compile Include="HandleInformMessage.cs" />
+    <Compile Include="HandleOfferMessage.cs" />
+    <Compile Include="HandleReplyMessage.cs" />
+    <Compile Include="HandleV4RequestMessage.cs" />
+    <Compile Include="HandleV6RequestMessage.cs" />
+    <Compile Include="IDHCPMessageWorker.cs" />
+    <Compile Include="DHCPMessageHandleResult.cs" />
+    <Compile Include="Message\DhcpMessage.cs" />
+    <Compile Include="Message\DhcpTransactionId.cs" />
+    <Compile Include="Message\DhcpV6Message.cs" />
+    <Compile Include="Message\DhcpV6RelayMessage.cs" />
+    <Compile Include="Option\Base\BaseDhcpOption.cs" />
+    <Compile Include="Option\Base\BaseDomainNameListOption.cs" />
+    <Compile Include="Option\Base\BaseDomainNameOption.cs" />
+    <Compile Include="Option\Base\BaseEmptyOption.cs" />
+    <Compile Include="Option\Base\BaseIpAddressOption.cs" />
+    <Compile Include="Option\Base\BaseOpaqueData.cs" />
+    <Compile Include="Option\Base\BaseOpaqueDataListOption.cs" />
+    <Compile Include="Option\Base\BaseOpaqueDataOption.cs" />
+    <Compile Include="Option\Base\BaseUnsignedShortListOption.cs" />
+    <Compile Include="Option\Base\BaseIpAddressListOption.cs" />
+    <Compile Include="Option\Base\BaseStringOption.cs" />
+    <Compile Include="Option\Base\BaseUnsignedByteOption.cs" />
+    <Compile Include="Option\Base\BaseUnsignedIntOption.cs" />
+    <Compile Include="Option\Base\BaseUnsignedShortOption.cs" />
+    <Compile Include="Option\Base\DhcpOption.cs" />
+    <Compile Include="Option\Base\DhcpV6BcmcsAddressesOption.cs" />
+    <Compile Include="Option\DhcpComparableOption.cs" />
+    <Compile Include="Option\DhcpUnknowOption.cs" />
+    <Compile Include="Option\Generic\GenericOpaqueDataOption.cs" />
+    <Compile Include="Option\Generic\GenericOptionFactory.cs" />
+    <Compile Include="Option\OpaqueDataUtil.cs" />
+    <Compile Include="Option\V4\DhcpV4ConfigOptions.cs" />
+    <Compile Include="Option\V4\DhcpV4VendorClassOption.cs" />
+    <Compile Include="Option\V6\DhcpV6AuthenticationOption.cs" />
+    <Compile Include="Option\V6\DhcpV6BcmcsDomainNamesOption.cs" />
+    <Compile Include="Option\V6\DhcpV6ClientFqdnOption.cs" />
+    <Compile Include="Option\V6\DhcpV6ClientIdOption.cs" />
+    <Compile Include="Option\V6\DhcpV6ConfigOptions.cs" />
+    <Compile Include="Option\V6\DhcpV6DnsServersOption.cs" />
+    <Compile Include="Option\V6\DhcpV6DomainSearchListOption.cs" />
+    <Compile Include="Option\V6\DhcpV6EchoRequestOption.cs" />
+    <Compile Include="Option\V6\DhcpV6ElapsedTimeOption.cs" />
+    <Compile Include="Option\V6\DhcpV6GeoconfCivicOption.cs" />
+    <Compile Include="Option\V6\DhcpV6IaAddrOption.cs" />
+    <Compile Include="Option\Base\BaseUnsignedByteListOption.cs" />
+    <Compile Include="Option\V4\DhcpV4BootFileNameOption.cs" />
+    <Compile Include="Option\V4\DhcpV4ClientFqdnOption.cs" />
+    <Compile Include="Option\V4\DhcpV4ClientIdOption.cs" />
+    <Compile Include="Option\V4\DhcpV4DomainNameOption.cs" />
+    <Compile Include="Option\V4\DhcpV4DomainServersOption.cs" />
+    <Compile Include="Option\V4\DhcpV4HostnameOption.cs" />
+    <Compile Include="Option\V4\DhcpV4LeaseTimeOption.cs" />
+    <Compile Include="Option\V4\DhcpV4MsgTypeOption.cs" />
+    <Compile Include="Option\V4\DhcpV4NetbiosNameServersOption.cs" />
+    <Compile Include="Option\V4\DhcpV4NetbiosNodeTypeOption.cs" />
+    <Compile Include="Option\V4\DhcpV4OptionFactory.cs" />
+    <Compile Include="Option\V4\DhcpV4ParamRequestOption.cs" />
+    <Compile Include="Option\V4\DhcpV4RequestedIpAddressOption.cs" />
+    <Compile Include="Option\V4\DhcpV4RoutersOption.cs" />
+    <Compile Include="Option\V4\DhcpV4ServerIdOption.cs" />
+    <Compile Include="Option\V4\DhcpV4SubnetMaskOption.cs" />
+    <Compile Include="Option\V4\DhcpV4TftpServerNameOption.cs" />
+    <Compile Include="Option\V4\DhcpV4TimeOffsetOption.cs" />
+    <Compile Include="Option\V4\DhcpV4TimeServersOption.cs" />
+    <Compile Include="Option\V4\DhcpV4VendorSpecificOption.cs" />
+    <Compile Include="Option\V6\DhcpV6IaNaOption.cs" />
+    <Compile Include="Option\V6\DhcpV6IaPdOption.cs" />
+    <Compile Include="Option\V6\DhcpV6IaPrefixOptionc.cs" />
+    <Compile Include="Option\V6\DhcpV6IaTaOption.cs" />
+    <Compile Include="Option\V6\DhcpV6InfoRefreshTimeOption.cs" />
+    <Compile Include="Option\V6\DhcpV6InterfaceIdOption.cs" />
+    <Compile Include="Option\V6\DhcpV6LostServerDomainNameOption.cs" />
+    <Compile Include="Option\V6\DhcpV6NewPosixTimezoneOption.cs" />
+    <Compile Include="Option\V6\DhcpV6NewTzdbTimezoneOption.cs" />
+    <Compile Include="Option\V6\DhcpV6NisDomainNameOption.cs" />
+    <Compile Include="Option\V6\DhcpV6NisPlusDomainNameOption.cs" />
+    <Compile Include="Option\V6\DhcpV6NisPlusServersOption.cs" />
+    <Compile Include="Option\V6\DhcpV6NisServersOption.cs" />
+    <Compile Include="Option\V6\DhcpV6OptionFactory.cs" />
+    <Compile Include="Option\V6\DhcpV6OptionRequestOption.cs" />
+    <Compile Include="Option\V6\DhcpV6PanaAgentAddressesOption.cs" />
+    <Compile Include="Option\V6\DhcpV6PreferenceOption.cs" />
+    <Compile Include="Option\V6\DhcpV6RapidCommitOption.cs" />
+    <Compile Include="Option\V6\DhcpV6ReconfigureAcceptOption.cs" />
+    <Compile Include="Option\V6\DhcpV6ReconfigureMessageOption.cs" />
+    <Compile Include="Option\V6\DhcpV6RelayOption.cs" />
+    <Compile Include="Option\V6\DhcpV6RemoteIdOption.cs" />
+    <Compile Include="Option\V6\DhcpV6ServerIdOption.cs" />
+    <Compile Include="Option\V6\DhcpV6ServerUnicastOption.cs" />
+    <Compile Include="Option\V6\DhcpV6SipServerAddressesOption.cs" />
+    <Compile Include="Option\V6\DhcpV6SipServerDomainNamesOption.cs" />
+    <Compile Include="Option\V6\DhcpV6SntpServersOption.cs" />
+    <Compile Include="Option\V6\DhcpV6StatusCodeOption.cs" />
+    <Compile Include="Option\V6\DhcpV6SubscriberIdOption.cs" />
+    <Compile Include="Option\V6\DhcpV6UserClassOption.cs" />
+    <Compile Include="Option\V6\DhcpV6VendorClassOption.cs" />
+    <Compile Include="Option\V6\DhcpV6VendorInfoOption.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Request\Bind\BaseAddrBindingManager.cs" />
+    <Compile Include="Request\Bind\BaseBindingManager.cs" />
+    <Compile Include="Request\Bind\Binding.cs" />
+    <Compile Include="Request\Bind\BindingObject.cs" />
+    <Compile Include="Request\Bind\BindingPool.cs" />
+    <Compile Include="Request\Bind\FreeList.cs" />
+    <Compile Include="Request\Bind\Range.cs" />
+    <Compile Include="Request\Bind\StaticBinding.cs" />
+    <Compile Include="Request\Bind\V4AddrBindingManager.cs" />
+    <Compile Include="Request\Bind\V4AddrBindingManagerImpl.cs" />
+    <Compile Include="Request\Bind\V4AddressBindingPool.cs" />
+    <Compile Include="Request\Bind\V4BindingAddress.cs" />
+    <Compile Include="Request\Bind\V4StaticAddressBinding.cs" />
+    <Compile Include="Request\Bind\V6AddrBindingManager.cs" />
+    <Compile Include="Request\Bind\V6AddressBindingPool.cs" />
+    <Compile Include="Request\Bind\V6BindingPrefix.cs" />
+    <Compile Include="Request\Bind\V6NaAddrBindingManagerImpl.cs" />
+    <Compile Include="Request\Bind\V6PrefixBindingManagerImpl.cs" />
+    <Compile Include="Request\Bind\V6PrefixBindingPool.cs" />
+    <Compile Include="Request\Bind\V6StaticAddressBinding.cs" />
+    <Compile Include="Request\Bind\V6StaticPrefixBinding.cs" />
+    <Compile Include="Request\Bind\V6TaAddrBindingManagerImpl.cs" />
+    <Compile Include="Request\Dns\DdnsCallback.cs" />
+    <Compile Include="Request\Dns\DdnsUpdate.cs" />
+    <Compile Include="Request\Dns\DdnsUpdater.cs" />
+    <Compile Include="Request\Dns\DhcpV4DdnsComplete.cs" />
+    <Compile Include="Request\Dns\Executors.cs" />
+    <Compile Include="Request\Dns\ForwardDdnsUpdate.cs" />
+    <Compile Include="Request\Dns\MessageDigest.cs" />
+    <Compile Include="Request\Dns\SimpleResolver.cs" />
+    <Compile Include="Test\ClientSimulatorV4.cs" />
+    <Compile Include="Utility\BitSet.cs" />
+    <Compile Include="Utility\DhcpConstants.cs" />
+    <Compile Include="Request\BaseDhcpV6Processor.cs" />
+    <Compile Include="Request\Bind\StaticBindingManager.cs" />
+    <Compile Include="Request\Bind\V6BindingAddress.cs" />
+    <Compile Include="Request\Bind\V6NaAddrBindingManager.cs" />
+    <Compile Include="Request\Bind\V6PrefixBindingManager.cs" />
+    <Compile Include="Request\Bind\V6TaAddrBindingManager.cs" />
+    <Compile Include="Request\DhcpV6ConfirmProcessor.cs" />
+    <Compile Include="Request\DhcpV6DeclineProcessor.cs" />
+    <Compile Include="Request\DhcpV6InfoRequestProcessor.cs" />
+    <Compile Include="Request\DhcpV6MessageHandler.cs" />
+    <Compile Include="Request\DhcpV6MessageProcessor.cs" />
+    <Compile Include="Request\DhcpV6RebindProcessor.cs" />
+    <Compile Include="Request\DhcpV6ReleaseProcessor.cs" />
+    <Compile Include="Request\DhcpV6RenewProcessor.cs" />
+    <Compile Include="Request\DhcpV6RequestProcessor.cs" />
+    <Compile Include="Request\DhcpV6SolicitProcessor.cs" />
+    <Compile Include="Request\Dns\DhcpV6DdnsComplete.cs" />
+    <Compile Include="Request\Dns\ExecutorService.cs" />
+    <Compile Include="Request\Dns\Name.cs" />
+    <Compile Include="Request\Dns\Resolver.cs" />
+    <Compile Include="Request\Dns\ReverseDdnsUpdate.cs" />
+    <Compile Include="Utility\Decodable.cs" />
+    <Compile Include="Utility\ObjectCopier.cs" />
+    <Compile Include="Utility\Serializable.cs" />
+    <Compile Include="Utility\Helper.cs" />
+    <Compile Include="Utility\Subnet.cs" />
+    <Compile Include="Utility\Util.cs" />
+    <Compile Include="V4Process\BaseDhcpV4Processor.cs" />
+    <Compile Include="Message\DhcpV4Message.cs" />
+    <Compile Include="V4Process\DhcpV4DeclineProcessor.cs" />
+    <Compile Include="V4Process\DhcpV4DiscoverProcessor.cs" />
+    <Compile Include="V4Process\DhcpV4InformProcessor.cs" />
+    <Compile Include="V4Process\DhcpV4MessageHandler.cs" />
+    <Compile Include="V4Process\DhcpV4MessageProcessor.cs" />
+    <Compile Include="V4Process\DhcpV4ReleaseProcessor.cs" />
+    <Compile Include="V4Process\DhcpV4RequestProcessor.cs" />
+    <Compile Include="Xml\ConfigClass.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PIXIS.PDI\PIXIS.PDI.csproj">
+      <Project>{6190CB15-87F5-4263-A323-4018E3A4F453}</Project>
+      <Name>PIXIS.PDI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\DhcpLink.java" />
+    <Content Include="Config\DhcpServerConfigException.java" />
+    <Content Include="Config\DhcpServerConfiguration.java" />
+    <Content Include="Config\DhcpServerPolicies.java" />
+    <Content Include="Config\DhcpV4OptionConfigObject.java" />
+    <Content Include="Config\DhcpV6OptionConfigObject.java" />
+    <Content Include="DB\DbSchemaManager.java" />
+    <Content Include="DB\DhcpLease.java" />
+    <Content Include="DB\DhcpOption.java" />
+    <Content Include="DB\DhcpOptionDAO.java" />
+    <Content Include="DB\IaAddress.java" />
+    <Content Include="DB\IaAddressDAO.java" />
+    <Content Include="DB\IaManager.java" />
+    <Content Include="Config\DhcpLink.java" />
+    <Content Include="Config\DhcpServerConfigException.java" />
+    <Content Include="Config\DhcpServerConfiguration.java" />
+    <Content Include="Config\DhcpServerPolicies.java" />
+    <Content Include="Config\DhcpV4OptionConfigObject.java" />
+    <Content Include="Config\DhcpV6OptionConfigObject.java" />
+    <Content Include="DB\IaPrefix.java" />
+    <Content Include="DB\IaPrefixDAO.java" />
+    <Content Include="DB\IdentityAssoc.java" />
+    <Content Include="DB\IdentityAssocDAO.java" />
+    <Content Include="DB\JdbcDhcpOptionDAO.java" />
+    <Content Include="DB\JdbcIaAddressDAO.java" />
+    <Content Include="DB\JdbcIaManager.java" />
+    <Content Include="DB\JdbcIaPrefixDAO.java" />
+    <Content Include="DB\JdbcIdentityAssocDAO.java" />
+    <Content Include="DB\JdbcLeaseManager.java" />
+    <Content Include="DB\LeaseManager.java" />
+    <Content Include="DB\MongoLeaseManager.java" />
+    <Content Include="DB\SqliteLeaseManager.java" />
+    <Content Include="JagornetDhcpServer.java" />
+    <Content Include="Message\DhcpMessage.java" />
+    <Content Include="Message\DhcpTransactionId.java" />
+    <Content Include="Message\DhcpV6Message.java" />
+    <Content Include="Message\DhcpV6RelayMessage.java" />
+    <Content Include="Option\Base\BaseDhcpOption.java" />
+    <Content Include="Option\Base\BaseDomainNameOption.java" />
+    <Content Include="Option\Base\BaseOpaqueData.java" />
+    <Content Include="Option\Base\BaseOpaqueDataOption.java" />
+    <Content Include="Option\Base\BaseUnsignedShortListOption.java" />
+    <Content Include="Option\Base\DhcpOption.java" />
+    <Content Include="Option\DhcpComparableOption.java" />
+    <Content Include="Option\DhcpUnknownOption.java" />
+    <Content Include="Option\OpaqueDataUtil.java" />
+    <Content Include="Option\V6\DhcpV6AuthenticationOption.java" />
+    <Content Include="Option\V6\DhcpV6BcmcsAddressesOption.java" />
+    <Content Include="Option\V6\DhcpV6BcmcsDomainNamesOption.java" />
+    <Content Include="Option\V6\DhcpV6ClientFqdnOption.java" />
+    <Content Include="Option\V6\DhcpV6ClientIdOption.java" />
+    <Content Include="Option\V6\DhcpV6ConfigOptions.java" />
+    <Content Include="Option\V6\DhcpV6DnsServersOption.java" />
+    <Content Include="Option\V6\DhcpV6DomainSearchListOption.java" />
+    <Content Include="Option\V6\DhcpV6EchoRequestOption.java" />
+    <Content Include="Option\V6\DhcpV6ElapsedTimeOption.java" />
+    <Content Include="Option\V6\DhcpV6GeoconfCivicOption.java" />
+    <Content Include="Option\V6\DhcpV6IaAddrOption.java" />
+    <Content Include="Option\V6\DhcpV6IaNaOption.java" />
+    <Content Include="Option\V6\DhcpV6IaPdOption.java" />
+    <Content Include="Option\V6\DhcpV6IaPrefixOption.java" />
+    <Content Include="Option\V6\DhcpV6IaTaOption.java" />
+    <Content Include="Option\V6\DhcpV6InfoRefreshTimeOption.java" />
+    <Content Include="Option\V6\DhcpV6InterfaceIdOption.java" />
+    <Content Include="Option\V6\DhcpV6LostServerDomainNameOption.java" />
+    <Content Include="Option\V6\DhcpV6NewPosixTimezoneOption.java" />
+    <Content Include="Option\V6\DhcpV6NewTzdbTimezoneOption.java" />
+    <Content Include="Option\V6\DhcpV6NisDomainNameOption.java" />
+    <Content Include="Option\V6\DhcpV6NisPlusDomainNameOption.java" />
+    <Content Include="Option\V6\DhcpV6NisPlusServersOption.java" />
+    <Content Include="Option\V6\DhcpV6NisServersOption.java" />
+    <Content Include="Option\V6\DhcpV6OptionFactory.java" />
+    <Content Include="Option\V6\DhcpV6OptionRequestOption.java" />
+    <Content Include="Option\V6\DhcpV6PanaAgentAddressesOption.java" />
+    <Content Include="Option\V6\DhcpV6PreferenceOption.java" />
+    <Content Include="Option\V6\DhcpV6RapidCommitOption.java" />
+    <Content Include="Option\V6\DhcpV6ReconfigureAcceptOption.java" />
+    <Content Include="Option\V6\DhcpV6ReconfigureMessageOption.java" />
+    <Content Include="Option\V6\DhcpV6RelayOption.java" />
+    <Content Include="Option\V6\DhcpV6RemoteIdOption.java" />
+    <Content Include="Option\V6\DhcpV6ServerIdOption.java" />
+    <Content Include="Option\V6\DhcpV6ServerUnicastOption.java" />
+    <Content Include="Option\V6\DhcpV6SipServerAddressesOption.java" />
+    <Content Include="Option\V6\DhcpV6SipServerDomainNamesOption.java" />
+    <Content Include="Option\V6\DhcpV6SntpServersOption.java" />
+    <Content Include="Option\V6\DhcpV6StatusCodeOption.java" />
+    <Content Include="Option\V6\DhcpV6SubscriberIdOption.java" />
+    <Content Include="Option\V6\DhcpV6UserClassOption.java" />
+    <Content Include="Option\V6\DhcpV6VendorClassOption.java" />
+    <Content Include="Option\V6\DhcpV6VendorInfoOption.java" />
+    <Content Include="Request\Bind\Binding.java" />
+    <Content Include="Request\Bind\BindingObject.java" />
+    <Content Include="Request\Bind\V6BindingAddress.java" />
+    <Content Include="Request\Bind\V6NaAddrBindingManager.java" />
+    <Content Include="Request\Dns\DdnsCallback.java" />
+    <Content Include="Request\Dns\DdnsUpdate.java" />
+    <Content Include="Request\Dns\DdnsUpdater.java" />
+    <Content Include="Request\Dns\DhcpV6DdnsComplete.java" />
+    <Content Include="Request\Dns\ForwardDdnsUpdate.java" />
+    <Content Include="Request\Dns\ReverseDdnsUpdate.java" />
+    <Content Include="Test\ClientSimulatorV4.java" />
+    <Content Include="Test\ClientSimulatorV6.java" />
+    <Content Include="V4Process\BaseDhcpV4Processor.java" />
+    <Content Include="Request\BaseDhcpV6Processor.java" />
+    <Content Include="Request\Bind\Binding.java" />
+    <Content Include="Request\Bind\BindingObject.java" />
+    <Content Include="Request\Bind\Range.java" />
+    <Content Include="Request\Bind\StaticBinding.java" />
+    <Content Include="Request\Bind\StaticBindingManager.java" />
+    <Content Include="Request\Bind\V6BindingPrefix.java" />
+    <Content Include="Request\DhcpV4DeclineProcessor.java" />
+    <Content Include="Request\DhcpV4DiscoverProcessor.java" />
+    <Content Include="Request\DhcpV4InformProcessor.java" />
+    <Content Include="Request\DhcpV4MessageHandler.java" />
+    <Content Include="V4Process\DhcpV4MessageProcessor.java" />
+    <Content Include="Request\DhcpV4ReleaseProcessor.java" />
+    <Content Include="Request\DhcpV4RequestProcessor.java" />
+    <Content Include="Request\DhcpV6ConfirmProcessor.java" />
+    <Content Include="Request\DhcpV6DeclineProcessor.java" />
+    <Content Include="Request\DhcpV6InfoRequestProcessor.java" />
+    <Content Include="Request\DhcpV6MessageHandler.java" />
+    <Content Include="Request\DhcpV6RebindProcessor.java" />
+    <Content Include="Request\DhcpV6ReleaseProcessor.java" />
+    <Content Include="Request\DhcpV6RenewProcessor.java" />
+    <Content Include="Request\DhcpV6RequestProcessor.java" />
+    <Content Include="Request\DhcpV6SolicitProcessor.java" />
+    <Content Include="Request\Dns\DhcpV4DdnsComplete.java" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

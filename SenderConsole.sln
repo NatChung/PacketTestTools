@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenderConsole", "SenderConsole\SenderConsole.csproj", "{6AE3EC36-11F7-4CFA-A76A-A000DE37CD34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxP.PacketDotNet", "PacketDotNet\MaxP.PacketDotNet.csproj", "{55ABBA4C-AAF9-4726-A592-0C92436CEC92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIXIS.DHCP", "DHCP Server\PIXIS.DHCP.csproj", "{66142871-4F58-436D-A1A9-00123902486F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6AE3EC36-11F7-4CFA-A76A-A000DE37CD34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AE3EC36-11F7-4CFA-A76A-A000DE37CD34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AE3EC36-11F7-4CFA-A76A-A000DE37CD34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AE3EC36-11F7-4CFA-A76A-A000DE37CD34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55ABBA4C-AAF9-4726-A592-0C92436CEC92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55ABBA4C-AAF9-4726-A592-0C92436CEC92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55ABBA4C-AAF9-4726-A592-0C92436CEC92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55ABBA4C-AAF9-4726-A592-0C92436CEC92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66142871-4F58-436D-A1A9-00123902486F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66142871-4F58-436D-A1A9-00123902486F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66142871-4F58-436D-A1A9-00123902486F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66142871-4F58-436D-A1A9-00123902486F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
